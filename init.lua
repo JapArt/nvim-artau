@@ -34,6 +34,11 @@ require("lazy").setup({
   },
 })
 
+-- NvimTree keymaps
+vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
+vim.keymap.set("n", "<leader>f", ":NvimTreeFocus<CR>", { desc = "Focus NvimTree" })
+vim.keymap.set("n", "<leader>c", ":NvimTreeClose<CR>", { desc = "Close NvimTree" })
+
 -- Telescope keymaps
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope: Find Files" })
