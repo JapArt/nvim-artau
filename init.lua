@@ -26,22 +26,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup Lazy
-require("lazy").setup({
-  { import = "artau.plugins" }
-}, {
-  install = {
-    colorscheme = { "everforest" },
-  },
-})
+require("lazy").setup("artau.plugins")
+
+vim.cmd.colorscheme("kanagawa")
 
 -- NvimTree keymaps
 vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
 vim.keymap.set("n", "<leader>f", ":NvimTreeFocus<CR>", { desc = "Focus NvimTree" })
 vim.keymap.set("n", "<leader>c", ":NvimTreeClose<CR>", { desc = "Close NvimTree" })
 
--- Telescope keymaps
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope: Find Files" })
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope: Live Grep" })
-vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope: Buffers" })
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope: Help Tags" })
+-- Fzf-Lua keymaps
+vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>", { desc = "FzfLua: Find files" })
+
