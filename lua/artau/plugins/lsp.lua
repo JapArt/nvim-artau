@@ -1,25 +1,24 @@
 return {
-  "neovim/nvim-lspconfig",
+  "nvimdev/lspsaga.nvim", -- Optional UI for LSP
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local lspconfig = require("lspconfig")
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "ruby",
+      callback = function()
+        if vim.lsp.get_active_clients({ name = "ruby_ls" })[1] then return end
 
-    lspconfig.ruby_ls.setup({
-      capabilities = capabilities,
-    })
+        local cmd = { "ruby-lsp" }
 
-    -- Optional: LSP keybindings
-    vim.api.nvim_create_autocmd("LspAttach", {
-      callback = function(args)
-        local bufnr = args.buf
-        local map = function(mode, lhs, rhs)
-          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
-        end
-        map("n", "gd", vim.lsp.buf.definition)
-        map("n", "K", vim.lsp.buf.hover)
-        map("n", "<leader>rn", vim.lsp.buf.rename)
-        map("n", "<leader>ca", vim.lsp.buf.code_action)
+        vim.lsp.start({
+          name = "ruby_ls",
+          cmd = cmd,
+          root_dir = vim.fs.dirname(
+            vim.fs.find({ ".git", ".ruby-version", "Gemfile" }, { upward = true })[1]
+          ),
+          settings = {},
+          capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        })
       end,
     })
   end,
-  }
+}
