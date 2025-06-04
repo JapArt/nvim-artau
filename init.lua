@@ -35,6 +35,12 @@ vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", { desc = "Toggle NvimTre
 vim.keymap.set("n", "<leader>f", ":NvimTreeFocus<CR>", { desc = "Focus NvimTree" })
 vim.keymap.set("n", "<leader>c", ":NvimTreeClose<CR>", { desc = "Close NvimTree" })
 
+-- Resize panes with arrows
+vim.keymap.set("n", "<S-Up>", ":resize -3<CR>", { desc = "Resize pane up" })
+vim.keymap.set("n", "<S-Down>", ":resize +3<CR>", { desc = "Resize pane down" })
+vim.keymap.set("n", "<S-Left>", ":vertical resize +3<CR>", { desc = "Resize pane left" })
+vim.keymap.set("n", "<S-Right>", ":vertical resize -3<CR>", { desc = "Resize pane right" })
+
 -- Fzf-Lua keymaps
 vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>", { desc = "FzfLua: Find files" })
 

@@ -17,9 +17,7 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ["<C-Tab>"] = cmp.mapping.select_next_item(),
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-        ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<S-Tab>"] = cmp.mapping.confirm({ select = true }),
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
       sources = cmp.config.sources({
