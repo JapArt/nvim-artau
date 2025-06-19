@@ -6,6 +6,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "number"
 vim.opt.tabstop = 2
+vim.opt.termguicolors = true
+
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -45,5 +47,9 @@ vim.keymap.set("n", "<S-Right>", ":vertical resize -3<CR>", { desc = "Resize pan
 -- Fzf-Lua keymaps
 vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>", { desc = "FzfLua: Find files" })
 
--- Set Neotest keymaps
-vim.keymap.set("n", "<leader>t", ":require('neotest').run.run", { desc = "Neotest: Run tests" })
+-- Set Vim Test keymaps
+vim.keymap.set("n", "<leader>tn", ":TestNearest<CR>", { desc = "Run nearest test" })
+vim.keymap.set("n", "<leader>tf", ":TestFile<CR>", { desc = "Run current test file" })
+vim.keymap.set("n", "<leader>ts", ":TestSuite<CR>", { desc = "Run entire test suite" })
+vim.keymap.set("n", "<leader>tl", ":TestLast<CR>", { desc = "Re-run last test" })
+

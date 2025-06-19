@@ -12,9 +12,9 @@ return {
         },
       icons = {
 	show = {
-	  file = false,
+	  file = true,
 	  folder = true,
-	  folder_arrow = false,
+	  folder_arrow = true,
 	  git = true,
 	},
 	git_placement = "before",
